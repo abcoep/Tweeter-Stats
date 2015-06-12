@@ -1,0 +1,37 @@
+Keys of the python dict returned by getData() :
+
+	'username'	:	Tweeter's username
+	'tweetCount'	:	Number of tweets made by the tweeter
+	'followersCount':	Count of tweeter's followers
+	'friendsCount'	:	Count of tweeter's friends
+	'location'	:	Location from where the last tweet was made.
+				A string of the form "City, Country"
+	'sinceID'	:	ID of the last tweet. An integer.
+	'tweetWords'	:	A dict itself.
+				Keys are tweet words, values are their resp count.
+	'hashtags'	:	Also a dict.
+				Keys are hashtags (without '#' as prefix),
+				values are their resp. count
+	'mostRetweeted'	:	An array of 3 dicts. Each dict has two keys :
+				'text' : Text content of the tweet
+				'count': Retweet count of the tweet
+	'popularTw'	:	Array of 3 most popular tweet words.
+	'popularH'	:	Array of 3 most popular tweet words.
+	'pTwCount'	:	Number of popular tweet words. Max value 3.
+				It is used in case less than 3 unique words 
+				are found in the tweets.
+	'pHCount'	:	Number of popular hashtags. Max value 3.
+				It is used in case less than 3 unique hashtags
+				are found in the tweets.
+
+To find the count of the most popular tweet word/hashtag, use
+	d['tweetWords'][tweetWord] or d['hashtags'][hashtag]
+where   d is the dict returned by getData(),
+	tweetWord is a member of d['popularTw']
+	hashtag is a member of d['popularH']
+
+Note :  The keys 'tweetWords' and 'hashtags', which are dicts themselves, may
+	drastically increase the size of d if the tweet count is large/
+	tweets are long/lot of hashtags are used. It is better you remove them
+	from d if you don't need them, using d.pop('tweetWords') and
+	d.pop('hashtags').
